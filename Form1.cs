@@ -39,7 +39,7 @@ namespace AnalizadorSemantico
             int contador_errores = 0;
             for (int x = 0; x < dataGridView1.RowCount; x++)
             {
-                if ((dataGridView1.Rows[x].Cells[1].Value.ToString()).Equals("ERROR"))
+                if ((dataGridView1.Rows[x].Cells[1].Value.ToString()).Equals("Error"))
                 {
                     contador_errores += 1;
                     dataGridView1.Rows[x].DefaultCellStyle.BackColor = Color.Red;
@@ -139,7 +139,7 @@ namespace AnalizadorSemantico
                     else
                     {
 
-                        dataGridView1.Rows.Add(unirString + "\"", "CADENA", contLineas, contColumnas);
+                        dataGridView1.Rows.Add(unirString + "\"", "Cadena", contLineas, contColumnas);
                         //contar_lineas += 1;
                         validarCadString = '0';
                         unirString = "";
@@ -166,7 +166,7 @@ namespace AnalizadorSemantico
                     if (letra.Equals('\n'))
                     {
 
-                        dataGridView1.Rows.Add(unirCom + "", "COMENTARIO", contLineas, contColumnas);
+                        dataGridView1.Rows.Add(unirCom + "", "Comentario", contLineas, contColumnas);
                         contLineas += 1;
                         contColumnas = 1;
                         validarCom = '0';
@@ -214,7 +214,7 @@ namespace AnalizadorSemantico
 
             if (Regex.IsMatch(unir, minusculas))
             {
-                dataGridView1.Rows.Add(unir + "", "ERROR", contLineas, contColumnas);
+                dataGridView1.Rows.Add(unir + "", "Error", contLineas, contColumnas);
                 unir = "";
             }
             else
@@ -248,7 +248,7 @@ namespace AnalizadorSemantico
             {
                 if (unir.Equals(reservado[i]))
                 {
-                    dataGridView1.Rows.Add(unir + "", "RESERVADO", contLineas, contColumnas);
+                    dataGridView1.Rows.Add(unir + "", "Reservada", contLineas, contColumnas);
                     validarReservado = '1';
                     if (Regex.IsMatch(unir, "si"))
                     {
@@ -260,34 +260,34 @@ namespace AnalizadorSemantico
 
             if (Regex.IsMatch(unir, numeros))
             {
-                dataGridView1.Rows.Add(unir + "", "NUMERO", contLineas, contColumnas);
+                dataGridView1.Rows.Add(unir + "", "Numero", contLineas, contColumnas);
             }
             else if (Regex.IsMatch(unir, delimitadores))
             {
-                dataGridView1.Rows.Add(unir + "", "DELIMITADOR", contLineas, contColumnas);
+                dataGridView1.Rows.Add(unir + "", "Delimitador", contLineas, contColumnas);
 
             }
             else if (Regex.IsMatch(unir, operadores))
             {
-                dataGridView1.Rows.Add(unir + "", "OPERADOR", contLineas, contColumnas);
+                dataGridView1.Rows.Add(unir + "", "Operador", contLineas, contColumnas);
             }
             else if (Regex.IsMatch(unir, asignacion))
             {
-                dataGridView1.Rows.Add(unir + "", "ASIGNACION", contLineas, contColumnas);
+                dataGridView1.Rows.Add(unir + "", "Asignacion", contLineas, contColumnas);
             }
             else if (Regex.IsMatch(unir, comparadores))
             {
-                dataGridView1.Rows.Add(unir + "", "COMPARADOR", contLineas, contColumnas);
+                dataGridView1.Rows.Add(unir + "", "Condicional", contLineas, contColumnas);
             }
             else if (Regex.IsMatch(unir, variables))
             {
-                dataGridView1.Rows.Add(unir + "", "VARIABLE", contLineas, contColumnas);
+                dataGridView1.Rows.Add(unir + "", "Variable", contLineas, contColumnas);
             }
 
             else if (validarReservado.Equals('0') & unir != "" & unir != "\"")
             {
 
-                dataGridView1.Rows.Add(unir + "", "ERROR", contLineas, contColumnas);
+                dataGridView1.Rows.Add(unir + "", "Error", contLineas, contColumnas);
 
             }
             unir = "";
@@ -326,7 +326,7 @@ namespace AnalizadorSemantico
 
             for (int x = 0; x < dataGridView1.RowCount; x++)
             {
-                if ((dataGridView1.Rows[x].Cells[1].Value.ToString()).Equals("COMENTARIO"))
+                if ((dataGridView1.Rows[x].Cells[1].Value.ToString()).Equals("Comentario"))
                 {
                     contComentarios_filaMenos += 1;
 
@@ -346,7 +346,7 @@ namespace AnalizadorSemantico
 
                 for (int s = 0; s <= (dataGridView1.RowCount - 1); s++)
                 {
-                    if ((dataGridView1.Rows[s].Cells[1].Value.ToString()).Equals("COMENTARIO"))
+                    if ((dataGridView1.Rows[s].Cells[1].Value.ToString()).Equals("Comentario"))
                     {
                         contComentarios += 1;
 
@@ -372,7 +372,7 @@ namespace AnalizadorSemantico
 
                 for (int s = 0; s < (dataGridView1.RowCount - contComentarios_filaMenos); s++)
                 {
-                    if ((dataGridView1.Rows[s].Cells[1].Value.ToString()).Equals("COMENTARIO"))
+                    if ((dataGridView1.Rows[s].Cells[1].Value.ToString()).Equals("Comentario"))
                     {
                         contComentarios += 1;
                     }
@@ -439,13 +439,13 @@ namespace AnalizadorSemantico
                     if (Regex.IsMatch(lexSint[recorrido], ";"))
                     {
 
-                        dataGridView2.Rows.Add("CORRECTA", "INICIALIZACION --> inicio ; <-- " + " FILA: " + numLinea[recorrido]);
+                        dataGridView2.Rows.Add("Correcto", "INICIALIZACION --> inicio ; <-- " + " FILA: " + numLinea[recorrido]);
                         recorrido += 1;
                         inicioCorrec = "1";
                     }
                     else
                     {
-                        dataGridView2.Rows.Add("ERROR", "SE ESPERABA PUNTO Y COMA" + " FILA: " + numLinea[recorrido] + " COLUMNA: " + numColumna[recorrido]);
+                        dataGridView2.Rows.Add("Error", "SE ESPERABA PUNTO Y COMA" + " FILA: " + numLinea[recorrido] + " COLUMNA: " + numColumna[recorrido]);
                     }
                 }
 
@@ -453,7 +453,7 @@ namespace AnalizadorSemantico
                 {
                     if (recorrido == 0)
                     {
-                        dataGridView2.Rows.Add("ERROR", "SE ESPERABA INICIALIZACION: --> inicio ; <-- " + "ANTES DE FILA: " + numLinea[recorrido]);
+                        dataGridView2.Rows.Add("Error", "SE ESPERABA INICIALIZACION: --> inicio ; <-- " + "ANTES DE FILA: " + numLinea[recorrido]);
 
                     }
                     //Console.Write("SE ESPERABA INICIALIZACION: inicio ;" + "antes de fila: " + num_linea[recorrido] +"\n");
@@ -484,14 +484,14 @@ namespace AnalizadorSemantico
                     if (Regex.IsMatch(lexSint[recorrido], ";"))
                     {
 
-                        dataGridView2.Rows.Add("CORRECTA", "INICIALIZACION --> proceso ; <-- " + "FILA: " + numLinea[recorrido]);
+                        dataGridView2.Rows.Add("Correcto", "INICIALIZACION --> proceso ; <-- " + "FILA: " + numLinea[recorrido]);
 
                         recorrido += 1;
                         procesoCorrec = "1";
                     }
                     else
                     {
-                        dataGridView2.Rows.Add("ERROR", "SE ESPERABA PUNTO Y COMA" + " FILA: " + numLinea[recorrido] + " COLUMNA: " + numColumna[recorrido]);
+                        dataGridView2.Rows.Add("Error", "SE ESPERABA PUNTO Y COMA" + " FILA: " + numLinea[recorrido] + " COLUMNA: " + numColumna[recorrido]);
                     }
                 }
 
@@ -557,7 +557,7 @@ namespace AnalizadorSemantico
                     if (Regex.IsMatch(lexSint[recorrido], ";"))
                     {
                         existFin = "1";
-                        dataGridView2.Rows.Add("CORRECTA", "FINALIZACION --> fin ; <--" + " FILA: " + numLinea[recorrido]);
+                        dataGridView2.Rows.Add("Correcto", "FINALIZACION --> fin ; <--" + " FILA: " + numLinea[recorrido]);
                         recorrido += 1;
 
                     }
@@ -577,12 +577,12 @@ namespace AnalizadorSemantico
                     {
                         if (existFin == "1")
                         {
-                            dataGridView2.Rows.Add("ERROR", "NO PUEDE ESCRIBIR DESPUES DE: --> fin ; <--" + " " + numLinea[recorrido]);
+                            dataGridView2.Rows.Add("Error", "NO PUEDE ESCRIBIR DESPUES DE: --> fin ; <--" + " " + numLinea[recorrido]);
 
                         }
                         else
                         {
-                            dataGridView2.Rows.Add("ERROR", "SE ESPERABA FINALIZACION: --> fin ; <--" + " " + numLinea[recorrido]);
+                            dataGridView2.Rows.Add("Error", "SE ESPERABA FINALIZACION: --> fin ; <--" + " " + numLinea[recorrido]);
 
                         }
                     }
@@ -628,14 +628,14 @@ namespace AnalizadorSemantico
                                 }
                                 if (existe == "si")
                                 {
-                                    dataGridView2.Rows.Add("ERROR", "NOMBRE DE VARIABLE YA EXISTE" + " FILA: " + numLinea[recorrido]);
+                                    dataGridView2.Rows.Add("Error", "VARIABLE YA DECLARADA" + " FILA: " + numLinea[recorrido]);
                                 }
                                 if (existe == "no")
                                 {
                                     variables[contVariables] = lexSint[recorrido_sum - 3];
                                     tipoVariables[contVariables] = "numero";
                                     contVariables += 1;
-                                    dataGridView2.Rows.Add("CORRECTA", "ASIGNACION DE VARIABLE ENTERA" + " FILA: " + numLinea[recorrido]);
+                                    dataGridView2.Rows.Add("Correcto", "ASIGNACION DE DATO ENTERO" + " FILA: " + numLinea[recorrido]);
 
                                     pasarAC[pasosPasarAC] = "int " + lexSint[recorrido_sum - 3] + " = " + lexSint[recorrido_sum - 1] + ";" + "\n";
                                     pasosPasarAC += 1;
@@ -647,24 +647,24 @@ namespace AnalizadorSemantico
                             else
                             {
 
-                                dataGridView2.Rows.Add("ERROR", "SE ESPERABA PUNTO Y COMA" + " FILA: " + numLinea[recorrido] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
+                                dataGridView2.Rows.Add("Error", "SE ESPERABA PUNTO Y COMA" + " FILA: " + numLinea[recorrido] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
                             }
 
                         }
                         else
                         {
-                            dataGridView2.Rows.Add("ERROR", "SE ESPERABA UN NUMERO" + " FILA: " + numLinea[recorrido] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
+                            dataGridView2.Rows.Add("Error", "SE ESPERABA UN NUMERO" + " FILA: " + numLinea[recorrido] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
                         }
 
                     }
                     else
                     {
-                        dataGridView2.Rows.Add("ERROR", "SE ESPERABA ASIGNADOR" + " FILA: " + numLinea[recorrido] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
+                        dataGridView2.Rows.Add("Error", "SE ESPERABA ASIGNADOR" + " FILA: " + numLinea[recorrido] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
                     }
                 }
                 else
                 {
-                    dataGridView2.Rows.Add("ERROR", "SE ESPERABA VARIABLE" + " FILA: " + numLinea[recorrido] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
+                    dataGridView2.Rows.Add("Error", "SE ESPERABA VARIABLE" + " FILA: " + numLinea[recorrido] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
                 }
                 recorrido = recorrido_sum;
             }
@@ -693,29 +693,29 @@ namespace AnalizadorSemantico
                             recorrido_sum += 1;
                             if (Regex.IsMatch(lexSint[recorrido_sum], ";"))
                             {
-                                dataGridView2.Rows.Add("ERROR", "DECLARACION --> entero <--DEBE IR ANTES DE --> proceso ; <-- " + "FILA: " + numLinea[recorrido]);
+                                dataGridView2.Rows.Add("Error", "DECLARACION --> entero <-- DEBE IR ANTES DE --> proceso ; <-- " + "FILA: " + numLinea[recorrido]);
                             }
                             else
                             {
 
-                                dataGridView2.Rows.Add("ERROR", "DECLARACION --> entero <--DEBE IR ANTES DE --> proceso ; <-- " + "FILA: " + numLinea[recorrido]); recorrido_sum -= 1;
+                                dataGridView2.Rows.Add("Error", "DECLARACION --> entero <-- DEBE IR ANTES DE --> proceso ; <-- " + "FILA: " + numLinea[recorrido]); recorrido_sum -= 1;
                             }
 
                         }
                         else
                         {
-                            dataGridView2.Rows.Add("ERROR", "DECLARACION --> entero <--DEBE IR ANTES DE --> proceso ; <-- " + "FILA: " + numLinea[recorrido]); recorrido_sum -= 1;
+                            dataGridView2.Rows.Add("Error", "DECLARACION --> entero <-- DEBE IR ANTES DE --> proceso ; <-- " + "FILA: " + numLinea[recorrido]); recorrido_sum -= 1;
                         }
 
                     }
                     else
                     {
-                        dataGridView2.Rows.Add("ERROR", "DECLARACION --> entero <--DEBE IR ANTES DE --> proceso ; <-- " + "FILA: " + numLinea[recorrido]); recorrido_sum -= 1;
+                        dataGridView2.Rows.Add("Error", "DECLARACION --> entero <-- DEBE IR ANTES DE --> proceso ; <-- " + "FILA: " + numLinea[recorrido]); recorrido_sum -= 1;
                     }
                 }
                 else
                 {
-                    dataGridView2.Rows.Add("ERROR", "DECLARACION --> entero <--DEBE IR ANTES DE --> proceso ; <-- " + "FILA: " + numLinea[recorrido]); recorrido_sum -= 1;
+                    dataGridView2.Rows.Add("Error", "DECLARACION --> entero <-- DEBE IR ANTES DE --> proceso ; <-- " + "FILA: " + numLinea[recorrido]); recorrido_sum -= 1;
                 }
                 recorrido = recorrido_sum;
             }
@@ -749,38 +749,38 @@ namespace AnalizadorSemantico
                                 }
                                 if (existe == "si")
                                 {
-                                    dataGridView2.Rows.Add("ERROR", "NOMBRE DE VARIABLE YA EXISTE" + " FILA: " + numLinea[recorrido]);
+                                    dataGridView2.Rows.Add("Error", "VARIABLE YA DECLARADA" + " FILA: " + numLinea[recorrido]);
                                 }
                                 if (existe == "no")
                                 {
                                     variables[contVariables] = lexSint[recorrido_sum - 3];
                                     tipoVariables[contVariables] = "cadena";
                                     contVariables += 1;
-                                    dataGridView2.Rows.Add("CORRECTA", "ASIGNACION DE VARIABLE CADENA" + " FILA: " + numLinea[recorrido]);
+                                    dataGridView2.Rows.Add("Correcto", "ASIGNACION DE VARIABLE CADENA" + " FILA: " + numLinea[recorrido]);
                                     pasarAC[pasosPasarAC] = "string " + lexSint[recorrido_sum - 3] + " = " + lexSint[recorrido_sum - 1] + ";" + "\n";
                                     pasosPasarAC += 1;
                                 }
                             }
                             else
                             {
-                                dataGridView2.Rows.Add("ERROR", "SE ESPERABA PUNTO Y COMA" + " FILA: " + numLinea[recorrido] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
+                                dataGridView2.Rows.Add("Error", "SE ESPERABA PUNTO Y COMA" + " FILA: " + numLinea[recorrido] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
                             }
 
                         }
                         else
                         {
-                            dataGridView2.Rows.Add("ERROR", "SE ESPERABA UNA CADENA" + " FILA: " + numLinea[recorrido] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
+                            dataGridView2.Rows.Add("Error", "SE ESPERABA UNA CADENA" + " FILA: " + numLinea[recorrido] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
                         }
 
                     }
                     else
                     {
-                        dataGridView2.Rows.Add("ERROR", "SE ESPERABA ASIGNADOR" + " FILA: " + numLinea[recorrido] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
+                        dataGridView2.Rows.Add("Error", "SE ESPERABA ASIGNADOR" + " FILA: " + numLinea[recorrido] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
                     }
                 }
                 else
                 {
-                    dataGridView2.Rows.Add("ERROR", "SE ESPERABA VARIABLE" + " FILA: " + numLinea[recorrido] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
+                    dataGridView2.Rows.Add("Error", "SE ESPERABA VARIABLE" + " FILA: " + numLinea[recorrido] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
                 }
                 recorrido = recorrido_sum;
             }
@@ -806,28 +806,28 @@ namespace AnalizadorSemantico
                             recorrido_sum += 1;
                             if (Regex.IsMatch(lexSint[recorrido_sum], ";"))
                             {
-                                dataGridView2.Rows.Add("ERROR", "DECLARACION --> cadena <--DEBE IR ANTES DE --> proceso ; <-- " + "FILA: " + numLinea[recorrido]);
+                                dataGridView2.Rows.Add("Error", "DECLARACION --> cadena <-- DEBE IR ANTES DE --> proceso ; <-- " + "FILA: " + numLinea[recorrido]);
                             }
                             else
                             {
-                                dataGridView2.Rows.Add("ERROR", "DECLARACION --> cadena <--DEBE IR ANTES DE --> proceso ; <-- " + "FILA: " + numLinea[recorrido]); recorrido_sum -= 1;
+                                dataGridView2.Rows.Add("Error", "DECLARACION --> cadena <-- DEBE IR ANTES DE --> proceso ; <-- " + "FILA: " + numLinea[recorrido]); recorrido_sum -= 1;
                             }
 
                         }
                         else
                         {
-                            dataGridView2.Rows.Add("ERROR", "DECLARACION --> cadena <--DEBE IR ANTES DE --> proceso ; <-- " + "FILA: " + numLinea[recorrido]); recorrido_sum -= 1;
+                            dataGridView2.Rows.Add("Error", "DECLARACION --> cadena <-- DEBE IR ANTES DE --> proceso ; <-- " + "FILA: " + numLinea[recorrido]); recorrido_sum -= 1;
                         }
 
                     }
                     else
                     {
-                        dataGridView2.Rows.Add("ERROR", "DECLARACION --> cadena <--DEBE IR ANTES DE --> proceso ; <-- " + "FILA: " + numLinea[recorrido]); recorrido_sum -= 1;
+                        dataGridView2.Rows.Add("Error", "DECLARACION --> cadena <-- DEBE IR ANTES DE --> proceso ; <-- " + "FILA: " + numLinea[recorrido]); recorrido_sum -= 1;
                     }
                 }
                 else
                 {
-                    dataGridView2.Rows.Add("ERROR", "DECLARACION --> cadena <--DEBE IR ANTES DE --> proceso ; <-- " + "FILA: " + numLinea[recorrido]); recorrido_sum -= 1;
+                    dataGridView2.Rows.Add("Error", "DECLARACION --> cadena <-- DEBE IR ANTES DE --> proceso ; <-- " + "FILA: " + numLinea[recorrido]); recorrido_sum -= 1;
                 }
                 recorrido = recorrido_sum;
             }
@@ -844,7 +844,7 @@ namespace AnalizadorSemantico
             {
                 if ((lexSint[recorrido_sum - 2] != "proceso" || lexSint[recorrido_sum - 1] != "proceso") & procesoCorrec == "0" & existPrintNoExistProcs == "0")
                 {
-                    dataGridView2.Rows.Add("ERROR", "SE ESPERABA INICIALIZACION: --> proceso ; <--" + " ANTES DE FILA: " + numLinea[recorrido] + "\n");
+                    dataGridView2.Rows.Add("Error", "SE ESPERABA INICIALIZACION: --> proceso ; <--" + " ANTES DE FILA: " + numLinea[recorrido] + "\n");
                     existPrintNoExistProcs = "1";
                 }
                 recorrido_sum += 1;
@@ -853,19 +853,19 @@ namespace AnalizadorSemantico
                     recorrido_sum += 1;
                     if (Regex.IsMatch(lexSint[recorrido_sum], ";"))
                     {
-                        dataGridView2.Rows.Add("CORRECTA", "IMPRIMIR EN PANTALLA VER" + " FILA: " + numLinea[recorrido_sum]);
+                        dataGridView2.Rows.Add("Correcto", "FUNCION VER" + " FILA: " + numLinea[recorrido_sum]);
                         pasarAC[pasosPasarAC] = " cout << " + lexSint[recorrido_sum - 1] + " << endl" + ";" + "\n";
                         pasosPasarAC += 1;
                     }
                     else
                     {
-                        dataGridView2.Rows.Add("ERROR", "SE ESPERABA PUNTO Y COMA" + " FILA: " + numLinea[recorrido] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
+                        dataGridView2.Rows.Add("Error", "SE ESPERABA PUNTO Y COMA" + " FILA: " + numLinea[recorrido] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
                     }
 
                 }
                 else
                 {
-                    dataGridView2.Rows.Add("ERROR", "SE ESPERABA UNA CADENA" + " FILA: " + numLinea[recorrido] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
+                    dataGridView2.Rows.Add("Error", "SE ESPERABA UNA CADENA" + " FILA: " + numLinea[recorrido] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
                 }
 
                 recorrido = recorrido_sum;
@@ -891,17 +891,17 @@ namespace AnalizadorSemantico
                     recorrido_sum += 1;
                     if (Regex.IsMatch(lexSint[recorrido_sum], ";"))
                     {
-                        dataGridView2.Rows.Add("ERROR", "ESTRUCTURA --> ver <--DEBE IR DESPUES DE --> proceso ; <-- " + "FILA: " + numLinea[recorrido]);
+                        dataGridView2.Rows.Add("Error", "FUNCION --> ver <-- DEBE IR DESPUES DE --> proceso ; <-- " + "FILA: " + numLinea[recorrido]);
                     }
                     else
                     {
-                        dataGridView2.Rows.Add("ERROR", "ESTRUCTURA --> ver <--DEBE IR DESPUES DE --> proceso ; <-- " + "FILA: " + numLinea[recorrido]); recorrido_sum -= 1;
+                        dataGridView2.Rows.Add("Error", "FUNCION --> ver <-- DEBE IR DESPUES DE --> proceso ; <-- " + "FILA: " + numLinea[recorrido]); recorrido_sum -= 1;
                     }
 
                 }
                 else
                 {
-                    dataGridView2.Rows.Add("ERROR", "ESTRUCTURA --> ver <--DEBE IR DESPUES DE --> proceso ; <-- " + "FILA: " + numLinea[recorrido]); recorrido_sum -= 1;
+                    dataGridView2.Rows.Add("Error", "FUNCION --> ver <-- DEBE IR DESPUES DE --> proceso ; <-- " + "FILA: " + numLinea[recorrido]); recorrido_sum -= 1;
                 }
 
                 recorrido = recorrido_sum;
@@ -916,7 +916,7 @@ namespace AnalizadorSemantico
             {
                 if ((lexSint[recorrido_sum - 2] != "proceso" || lexSint[recorrido_sum - 1] != "proceso") & procesoCorrec == "0" & existPrintNoExistProcs == "0")
                 {
-                    dataGridView2.Rows.Add("ERROR", "SE ESPERABA INICIALIZACION: --> proceso ; <--" + " ANTES DE FILA: " + numLinea[recorrido_sum]);
+                    dataGridView2.Rows.Add("Error", "SE ESPERABA INICIALIZACION: --> proceso ; <--" + " ANTES DE FILA: " + numLinea[recorrido_sum]);
                     existPrintNoExistProcs = "1";
                 }
                 recorrido_sum += 1;
@@ -935,31 +935,31 @@ namespace AnalizadorSemantico
                             recorrido_sum += 1;
                             if (Regex.IsMatch(lexSint[recorrido_sum], "}"))
                             {
-                                dataGridView2.Rows.Add("CORRECTA", "SI ( ) { }" + " FINALIZACION FILA: " + numLinea[recorrido_sum]);
+                                dataGridView2.Rows.Add("Correcto", "SI ( ) { }" + " FINALIZACION FILA: " + numLinea[recorrido_sum]);
                                 //pasar_a_c[pasos_pasar_a_c] = " if ( ";
 
                                 //pasos_pasar_a_c += 1;
                             }
                             else
                             {
-                                dataGridView2.Rows.Add("ERROR", "SE ESPERABA CIERRE DE LLAVE" + " FILA: " + numLinea[recorrido_sum] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
+                                dataGridView2.Rows.Add("Error", "SE ESPERABA CIERRE DE LLAVE }" + " FILA: " + numLinea[recorrido_sum] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
                             }
 
                         }
                         else
                         {
-                            dataGridView2.Rows.Add("ERROR", "SE ESPERABA APERTURA DE LLAVE" + " FILA: " + numLinea[recorrido_sum] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
+                            dataGridView2.Rows.Add("Error", "SE ESPERABA APERTURA DE LLAVE {" + " FILA: " + numLinea[recorrido_sum] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
                         }
 
                     }
                     else
                     {
-                        dataGridView2.Rows.Add("ERROR", "SE ESPERABA CIERRE DE PARENTESIS" + " FILA: " + numLinea[recorrido_sum] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
+                        dataGridView2.Rows.Add("Error", "SE ESPERABA CIERRE DE PARENTESIS )" + " FILA: " + numLinea[recorrido_sum] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
                     }
                 }
                 else
                 {
-                    dataGridView2.Rows.Add("ERROR", "SE ESPERABA APERTURA DE PARENTESIS" + " FILA: " + numLinea[recorrido_sum] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
+                    dataGridView2.Rows.Add("Error", "SE ESPERABA APERTURA DE PARENTESIS (" + " FILA: " + numLinea[recorrido_sum] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
                 }
 
                 recorrido = recorrido_sum;
@@ -997,28 +997,28 @@ namespace AnalizadorSemantico
                             recorrido_sum += 1;
                             if (Regex.IsMatch(lexSint[recorrido_sum], "}"))
                             {
-                                dataGridView2.Rows.Add("ERROR", "ESTRUCTURA --> si <--DEBE IR DESPUES DE --> proceso ; <-- " + "FILA: " + numLinea[recorrido_sum]);
+                                dataGridView2.Rows.Add("Error", "ESTRUCTURA --> si <-- DEBE IR DESPUES DE --> proceso ; <-- " + "FILA: " + numLinea[recorrido_sum]);
                             }
                             else
                             {
-                                dataGridView2.Rows.Add("ERROR", "ESTRUCTURA --> si <--DEBE IR DESPUES DE --> proceso ; <-- " + "FILA: " + numLinea[recorrido_sum]); recorrido_sum -= 1;
+                                dataGridView2.Rows.Add("Error", "ESTRUCTURA --> si <-- DEBE IR DESPUES DE --> proceso ; <-- " + "FILA: " + numLinea[recorrido_sum]); recorrido_sum -= 1;
                             }
 
                         }
                         else
                         {
-                            dataGridView2.Rows.Add("ERROR", "ESTRUCTURA --> si <--DEBE IR DESPUES DE --> proceso ; <-- " + "FILA: " + numLinea[recorrido_sum]); recorrido_sum -= 1;
+                            dataGridView2.Rows.Add("Error", "ESTRUCTURA --> si <-- DEBE IR DESPUES DE --> proceso ; <-- " + "FILA: " + numLinea[recorrido_sum]); recorrido_sum -= 1;
                         }
 
                     }
                     else
                     {
-                        dataGridView2.Rows.Add("ERROR", "ESTRUCTURA --> si <--DEBE IR DESPUES DE --> proceso ; <-- " + "FILA: " + numLinea[recorrido_sum]); recorrido_sum -= 1;
+                        dataGridView2.Rows.Add("Error", "ESTRUCTURA --> si <-- DEBE IR DESPUES DE --> proceso ; <-- " + "FILA: " + numLinea[recorrido_sum]); recorrido_sum -= 1;
                     }
                 }
                 else
                 {
-                    dataGridView2.Rows.Add("ERROR", "ESTRUCTURA --> si <--DEBE IR DESPUES DE --> proceso ; <-- " + "FILA: " + numLinea[recorrido_sum]); recorrido_sum -= 1;
+                    dataGridView2.Rows.Add("Error", "ESTRUCTURA --> si <-- DEBE IR DESPUES DE --> proceso ; <-- " + "FILA: " + numLinea[recorrido_sum]); recorrido_sum -= 1;
                 }
 
                 recorrido = recorrido_sum;
@@ -1035,7 +1035,7 @@ namespace AnalizadorSemantico
             {
                 if ((lexSint[recorrido_sum - 2] != "proceso" || lexSint[recorrido_sum - 1] != "proceso") & procesoCorrec == "0" & existPrintNoExistProcs == "0")
                 {
-                    dataGridView2.Rows.Add("ERROR", "SE ESPERABA INICIALIZACION: --> proceso ; <--" + " ANTES DE FILA: " + numLinea[recorrido_sum]);
+                    dataGridView2.Rows.Add("Error", "SE ESPERABA INICIALIZACION: --> proceso ; <--" + " ANTES DE FILA: " + numLinea[recorrido_sum]);
                     existPrintNoExistProcs = "1";
                 }
                 recorrido_sum += 1;
@@ -1054,28 +1054,28 @@ namespace AnalizadorSemantico
                             recorrido_sum += 1;
                             if (Regex.IsMatch(lexSint[recorrido_sum], "}"))
                             {
-                                dataGridView2.Rows.Add("CORRECTA", "MIENTRAS ( ) { }" + " FINALIZACION FILA: " + numLinea[recorrido_sum]);
+                                dataGridView2.Rows.Add("Correcto", "MIENTRAS ( ) { }" + " FINALIZACION FILA: " + numLinea[recorrido_sum]);
                             }
                             else
                             {
-                                dataGridView2.Rows.Add("ERROR", "SE ESPERABA CIERRE DE LLAVE" + " FILA: " + numLinea[recorrido_sum] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
+                                dataGridView2.Rows.Add("Error", "SE ESPERABA CIERRE DE LLAVE }" + " FILA: " + numLinea[recorrido_sum] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
                             }
 
                         }
                         else
                         {
-                            dataGridView2.Rows.Add("ERROR", "SE ESPERABA APERTURA DE LLAVE" + " FILA: " + numLinea[recorrido_sum] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
+                            dataGridView2.Rows.Add("Error", "SE ESPERABA APERTURA DE LLAVE {" + " FILA: " + numLinea[recorrido_sum] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
                         }
 
                     }
                     else
                     {
-                        dataGridView2.Rows.Add("ERROR", "SE ESPERABA CIERRE DE PARENTESIS" + " FILA: " + numLinea[recorrido_sum] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
+                        dataGridView2.Rows.Add("Error", "SE ESPERABA CIERRE DE PARENTESIS )" + " FILA: " + numLinea[recorrido_sum] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
                     }
                 }
                 else
                 {
-                    dataGridView2.Rows.Add("ERROR", "SE ESPERABA APERTURA DE PARENTESIS" + " FILA: " + numLinea[recorrido_sum] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
+                    dataGridView2.Rows.Add("Error", "SE ESPERABA APERTURA DE PARENTESIS (" + " FILA: " + numLinea[recorrido_sum] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
                 }
 
                 recorrido = recorrido_sum;
@@ -1110,28 +1110,28 @@ namespace AnalizadorSemantico
                             recorrido_sum += 1;
                             if (Regex.IsMatch(lexSint[recorrido_sum], "}"))
                             {
-                                dataGridView2.Rows.Add("CORRECTA", "MIENTRAS ( ) { }" + " FINALIZACION FILA: " + numLinea[recorrido_sum]);
+                                dataGridView2.Rows.Add("Correcto", "MIENTRAS ( ) { }" + " FINALIZACION FILA: " + numLinea[recorrido_sum]);
                             }
                             else
                             {
-                                dataGridView2.Rows.Add("ERROR", "SE ESPERABA CIERRE DE LLAVE" + " FILA: " + numLinea[recorrido_sum] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
+                                dataGridView2.Rows.Add("Error", "SE ESPERABA CIERRE DE LLAVE }" + " FILA: " + numLinea[recorrido_sum] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
                             }
 
                         }
                         else
                         {
-                            dataGridView2.Rows.Add("ERROR", "SE ESPERABA APERTURA DE LLAVE" + " FILA: " + numLinea[recorrido_sum] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
+                            dataGridView2.Rows.Add("Error", "SE ESPERABA APERTURA DE LLAVE {" + " FILA: " + numLinea[recorrido_sum] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
                         }
 
                     }
                     else
                     {
-                        dataGridView2.Rows.Add("ERROR", "SE ESPERABA CIERRE DE PARENTESIS" + " FILA: " + numLinea[recorrido_sum] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
+                        dataGridView2.Rows.Add("Error", "SE ESPERABA CIERRE DE PARENTESIS )" + " FILA: " + numLinea[recorrido_sum] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
                     }
                 }
                 else
                 {
-                    dataGridView2.Rows.Add("ERROR", "SE ESPERABA APERTURA DE PARENTESIS" + " FILA: " + numLinea[recorrido_sum] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
+                    dataGridView2.Rows.Add("Error", "SE ESPERABA APERTURA DE PARENTESIS (" + " FILA: " + numLinea[recorrido_sum] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
                 }
 
                 recorrido = recorrido_sum;
@@ -1147,7 +1147,7 @@ namespace AnalizadorSemantico
             {
                 if ((lexSint[recorrido_sum - 2] != "proceso" || lexSint[recorrido_sum - 1] != "proceso") & procesoCorrec == "0" & existPrintNoExistProcs == "0")
                 {
-                    dataGridView2.Rows.Add("ERROR", "SE ESPERABA INICIALIZACION: --> proceso ; <--" + " ANTES DE FILA: " + numLinea[recorrido_sum]);
+                    dataGridView2.Rows.Add("Error", "SE ESPERABA INICIALIZACION: --> proceso ; <--" + " ANTES DE FILA: " + numLinea[recorrido_sum]);
                     existPrintNoExistProcs = "1";
                 }
                 recorrido_sum += 1;
@@ -1156,7 +1156,7 @@ namespace AnalizadorSemantico
                     recorrido_sum += 1;
                     if (Regex.IsMatch(lexSint[recorrido_sum], ";"))
                     {
-                        dataGridView2.Rows.Add("CORRECTA", "IMPRIMIR EN PANTALLA VER" + " FILA: " + numLinea[recorrido_sum]);
+                        dataGridView2.Rows.Add("Correcto", "FUNCION VER" + " FILA: " + numLinea[recorrido_sum]);
                         pasarAC[pasosPasarAC] = "{ " + "\n";
                         pasosPasarAC += 1;
                         pasarAC[pasosPasarAC] = " cout << " + lexSint[recorrido_sum - 1] + " << endl" + ";" + "\n";
@@ -1166,13 +1166,13 @@ namespace AnalizadorSemantico
                     }
                     else
                     {
-                        dataGridView2.Rows.Add("ERROR", "SE ESPERABA PUNTO Y COMA" + " FILA: " + numLinea[recorrido_sum] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
+                        dataGridView2.Rows.Add("Error", "SE ESPERABA PUNTO Y COMA" + " FILA: " + numLinea[recorrido_sum] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
                     }
 
                 }
                 else
                 {
-                    dataGridView2.Rows.Add("ERROR", "SE ESPERABA UNA CADENA" + " FILA: " + numLinea[recorrido_sum] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
+                    dataGridView2.Rows.Add("Error", "SE ESPERABA UNA CADENA" + " FILA: " + numLinea[recorrido_sum] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
                 }
 
                 recorrido = recorrido_sum;
@@ -1237,7 +1237,7 @@ namespace AnalizadorSemantico
                     }
                     if (existe == "no")
                     {
-                        dataGridView2.Rows.Add("ERROR", "NOMBRE DE VARIABLE NO DECLARADA" + " FILA: " + numLinea[recorrido] + " COLUMNA: " + numColumna[recorrido_sum]);
+                        dataGridView2.Rows.Add("Error", "VARIABLE NO DECLARADA" + " FILA: " + numLinea[recorrido] + " COLUMNA: " + numColumna[recorrido_sum]);
                     }
                 }
 
@@ -1285,7 +1285,7 @@ namespace AnalizadorSemantico
                             }
                             if (existe2 == "no")
                             {
-                                dataGridView2.Rows.Add("ERROR", "NOMBRE DE VARIABLE NO DECLARADA" + " FILA: " + numLinea[recorrido] + " COLUMNA: " + numColumna[recorrido_sum]);
+                                dataGridView2.Rows.Add("Error", "VARIABLE NO DECLARADA" + " FILA: " + numLinea[recorrido] + " COLUMNA: " + numColumna[recorrido_sum]);
                             }
                         }
 
@@ -1298,14 +1298,14 @@ namespace AnalizadorSemantico
 
                             if (tipo == tipo2)
                             {
-                                dataGridView2.Rows.Add("CORRECTA", " COMPARACION" + " FILA: " + numLinea[recorrido_sum]);
+                                dataGridView2.Rows.Add("Correcto", " CONDICIONAL" + " FILA: " + numLinea[recorrido_sum]);
                                 pasarAC[pasosPasarAC] = "if ( " + lexSint[recorrido_sum - 2] + " " + lexSint[recorrido_sum - 1] + " " + lexSint[recorrido_sum] + " )" + "\n";
                                 pasosPasarAC += 1;
 
                             }
                             else
                             {
-                                dataGridView2.Rows.Add("ERROR", " DATOS DIFERENTES EN COMPARACION " + " FILA: " + numLinea[recorrido_sum]);
+                                dataGridView2.Rows.Add("Error", " DATOS DIFERENTES EN COMPARACION " + " FILA: " + numLinea[recorrido_sum]);
                             }
 
 
@@ -1313,18 +1313,18 @@ namespace AnalizadorSemantico
                     }
                     else
                     {
-                        dataGridView2.Rows.Add("ERROR", "SE ESPERABA VARIABLE, CADENA O NUMERO" + " FILA: " + numLinea[recorrido_sum] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
+                        dataGridView2.Rows.Add("Error", "SE ESPERABA VARIABLE, CADENA O NUMERO" + " FILA: " + numLinea[recorrido_sum] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
                     }
 
                 }
                 else
                 {
-                    dataGridView2.Rows.Add("ERROR", "SE ESPERABA UN COMPARADOR" + " FILA: " + numLinea[recorrido_sum] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
+                    dataGridView2.Rows.Add("Error", "SE ESPERABA UN COMPARADOR" + " FILA: " + numLinea[recorrido_sum] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
                 }
             }
             else
             {
-                dataGridView2.Rows.Add("ERROR", "SE ESPERABA UNA VARIABLE, CADENA O NUMERO" + " FILA: " + numLinea[recorrido_sum] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
+                dataGridView2.Rows.Add("Error", "SE ESPERABA UNA VARIABLE, CADENA O NUMERO" + " FILA: " + numLinea[recorrido_sum] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
             }
 
         }
@@ -1379,7 +1379,7 @@ namespace AnalizadorSemantico
                     }
                     if (existe == "no")
                     {
-                        dataGridView2.Rows.Add("ERROR", "NOMBRE DE VARIABLE NO DECLARADA" + " FILA: " + numLinea[recorrido] + " COLUMNA: " + numColumna[recorrido_sum]);
+                        dataGridView2.Rows.Add("Error", "VARIABLE NO DECLARADA" + " FILA: " + numLinea[recorrido] + " COLUMNA: " + numColumna[recorrido_sum]);
                     }
                 }
 
@@ -1427,7 +1427,7 @@ namespace AnalizadorSemantico
                             }
                             if (existe2 == "no")
                             {
-                                dataGridView2.Rows.Add("ERROR", "NOMBRE DE VARIABLE NO DECLARADA" + " FILA: " + numLinea[recorrido] + " COLUMNA: " + numColumna[recorrido_sum]);
+                                dataGridView2.Rows.Add("Error", "VARIABLE NO DECLARADA" + " FILA: " + numLinea[recorrido] + " COLUMNA: " + numColumna[recorrido_sum]);
                             }
                         }
 
@@ -1440,14 +1440,14 @@ namespace AnalizadorSemantico
 
                             if (tipo == tipo2)
                             {
-                                dataGridView2.Rows.Add("CORRECTA", " COMPARACION" + " FILA: " + numLinea[recorrido_sum]);
+                                dataGridView2.Rows.Add("Correcto", " CONDICIONAL" + " FILA: " + numLinea[recorrido_sum]);
                                 pasarAC[pasosPasarAC] = "while ( " + lexSint[recorrido_sum - 2] + " " + lexSint[recorrido_sum - 1] + " " + lexSint[recorrido_sum] + " )" + "\n";
                                 pasosPasarAC += 1;
 
                             }
                             else
                             {
-                                dataGridView2.Rows.Add("ERROR", " DATOS DIFERENTES EN COMPARACION " + " FILA: " + numLinea[recorrido_sum]);
+                                dataGridView2.Rows.Add("Error", " DATOS DIFERENTES EN COMPARACION " + " FILA: " + numLinea[recorrido_sum]);
                             }
 
 
@@ -1455,20 +1455,19 @@ namespace AnalizadorSemantico
                     }
                     else
                     {
-                        dataGridView2.Rows.Add("ERROR", "SE ESPERABA VARIABLE, CADENA O NUMERO" + " FILA: " + numLinea[recorrido_sum] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
+                        dataGridView2.Rows.Add("Error", "SE ESPERABA VARIABLE, CADENA O NUMERO" + " FILA: " + numLinea[recorrido_sum] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
                     }
 
                 }
                 else
                 {
-                    dataGridView2.Rows.Add("ERROR", "SE ESPERABA UN COMPARADOR" + " FILA: " + numLinea[recorrido_sum] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
+                    dataGridView2.Rows.Add("Error", "SE ESPERABA UN COMPARADOR" + " FILA: " + numLinea[recorrido_sum] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
                 }
 
-                // recorrido = recorrido_sum;
             }
             else
             {
-                dataGridView2.Rows.Add("ERROR", "SE ESPERABA UNA VARIABLE, CADENA O NUMERO" + " FILA: " + numLinea[recorrido_sum] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
+                dataGridView2.Rows.Add("Error", "SE ESPERABA UNA VARIABLE, CADENA O NUMERO" + " FILA: " + numLinea[recorrido_sum] + " COLUMNA: " + numColumna[recorrido_sum]); recorrido_sum -= 1;
             }
 
         }
